@@ -50,7 +50,7 @@ jobs:
           if ($files.Count -ne 1 -or $files[0].Length -lt 1000000) { throw 'Expected one nonempty NSIS installer' }
           Get-FileHash $files[0].FullName -Algorithm SHA256
       - name: Upload development artifact (not a release)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: dentiva-pro-unvalidated-development-installer
           path: dist/*Setup*.exe
