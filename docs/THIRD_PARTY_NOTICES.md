@@ -1,6 +1,6 @@
 # Third-party dependency inventory (development lockfile)
 
-Generated from package-lock.json. 581 package entries. Licenses shown are npm metadata, not a complete legal review. This is not release sign-off.
+Generated from package-lock.json. 563 package entries. Licenses shown are npm metadata, not a complete legal review. This is not release sign-off.
 
 | Package | Version | License |
 |---|---|---|
@@ -187,13 +187,8 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | @typescript-eslint/visitor-keys | 8.71.0 | MIT |
 | @typescript-eslint/visitor-keys/node_modules/eslint-visitor-keys | 5.0.1 | Apache-2.0 |
 | @vitejs/plugin-react | 5.2.0 | MIT |
-| @vitest/expect | 3.2.7 | MIT |
-| @vitest/mocker | 3.2.7 | MIT |
-| @vitest/pretty-format | 3.2.7 | MIT |
-| @vitest/runner | 3.2.7 | MIT |
-| @vitest/snapshot | 3.2.7 | MIT |
-| @vitest/spy | 3.2.7 | MIT |
-| @vitest/utils | 3.2.7 | MIT |
+| @vitest/mocker | 5.0.2 | MIT |
+| @vitest/spy | 5.0.2 | MIT |
 | @xmldom/xmldom | 0.8.15 | MIT |
 | abbrev | 4.0.0 | ISC |
 | acorn | 8.18.0 | MIT |
@@ -237,15 +232,13 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | builder-util/node_modules/jsonfile | 6.2.1 | MIT |
 | builder-util/node_modules/universalify | 2.0.1 | MIT |
 | bytestreamjs | 2.0.1 | BSD-3-Clause |
-| cac | 6.7.14 | MIT |
 | cacheable-lookup | 5.0.4 | MIT |
 | cacheable-request | 7.0.4 | MIT |
 | call-bind-apply-helpers | 1.0.2 | MIT |
 | callsites | 3.1.0 | MIT |
 | caniuse-lite | 1.0.30001813 | CC-BY-4.0 |
-| chai | 5.3.3 | MIT |
+| chai | 6.2.2 | MIT |
 | chalk | 4.1.2 | MIT |
-| check-error | 2.1.3 | MIT |
 | chownr | 3.0.0 | BlueOak-1.0.0 |
 | chromium-pickle-js | 0.2.0 | MIT |
 | ci-info | 4.4.0 | MIT |
@@ -267,7 +260,6 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | debug | 4.4.3 | MIT |
 | decompress-response | 6.0.0 | MIT |
 | decompress-response/node_modules/mimic-response | 3.1.0 | MIT |
-| deep-eql | 5.0.2 | MIT |
 | deep-extend | 0.6.0 | MIT |
 | deep-is | 0.1.4 | MIT |
 | defer-to-connect | 2.0.1 | MIT |
@@ -313,7 +305,7 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | err-code | 2.0.3 | MIT |
 | es-define-property | 1.0.1 | MIT |
 | es-errors | 1.3.0 | MIT |
-| es-module-lexer | 1.7.0 | MIT |
+| es-module-lexer | 2.3.2 | MIT |
 | es-object-atoms | 1.1.2 | MIT |
 | es-set-tostringtag | 2.1.0 | MIT |
 | es6-error | 4.1.1 | MIT |
@@ -416,11 +408,10 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | locate-path | 6.0.0 | MIT |
 | lodash | 4.18.1 | MIT |
 | lodash.merge | 4.6.2 | MIT |
-| loupe | 3.2.1 | MIT |
 | lowercase-keys | 2.0.0 | MIT |
 | lru-cache | 5.1.1 | ISC |
 | lucide-react | 0.468.0 | ISC |
-| magic-string | 0.30.21 | MIT |
+| magic-string | 1.4.2 | MIT |
 | matcher | 3.0.0 | MIT |
 | math-intrinsics | 1.1.0 | MIT |
 | mime | 2.6.0 | MIT |
@@ -450,6 +441,7 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | nopt | 9.0.0 | ISC |
 | normalize-url | 6.1.0 | MIT |
 | object-keys | 1.1.1 | MIT |
+| obug | 2.2.1 | MIT |
 | once | 1.4.0 | ISC |
 | optionator | 0.9.4 | MIT |
 | p-cancelable | 2.1.1 | MIT |
@@ -459,8 +451,6 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | path-exists | 4.0.0 | MIT |
 | path-is-absolute | 1.0.1 | MIT |
 | path-key | 3.1.1 | MIT |
-| pathe | 2.0.3 | MIT |
-| pathval | 2.0.1 | MIT |
 | pe-library | 0.4.1 | MIT |
 | picocolors | 1.1.1 | ISC |
 | picomatch | 4.0.7 | MIT |
@@ -510,7 +500,6 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | serialize-error | 7.0.1 | MIT |
 | shebang-command | 2.0.0 | MIT |
 | shebang-regex | 3.0.0 | MIT |
-| siginfo | 2.0.0 | ISC |
 | signal-exit | 3.0.7 | ISC |
 | simple-concat | 1.0.1 | MIT |
 | simple-get | 4.0.1 | MIT |
@@ -520,15 +509,12 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | source-map-js | 1.2.1 | BSD-3-Clause |
 | source-map-support | 0.5.21 | MIT |
 | sprintf-js | 1.1.3 | BSD-3-Clause |
-| stackback | 0.0.2 | MIT |
 | stat-mode | 1.0.0 | MIT |
-| std-env | 3.10.0 | MIT |
+| std-env | 4.2.0 | MIT |
 | string_decoder | 1.3.0 | MIT |
 | string-width | 4.2.3 | MIT |
 | strip-ansi | 6.0.1 | MIT |
 | strip-json-comments | 3.1.1 | MIT |
-| strip-literal | 3.1.0 | MIT |
-| strip-literal/node_modules/js-tokens | 9.0.1 | MIT |
 | sumchecker | 3.0.1 | Apache-2.0 |
 | supports-color | 7.2.0 | MIT |
 | tar | 7.5.22 | BlueOak-1.0.0 |
@@ -543,12 +529,9 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | temp-file/node_modules/universalify | 2.0.1 | MIT |
 | tiny-async-pool | 1.3.0 | MIT |
 | tiny-async-pool/node_modules/semver | 5.7.2 | ISC |
-| tinybench | 2.9.0 | MIT |
-| tinyexec | 0.3.2 | MIT |
+| tinybench | 6.2.0 | MIT |
+| tinyexec | 1.3.1 | MIT |
 | tinyglobby | 0.2.17 | MIT |
-| tinypool | 1.1.1 | MIT |
-| tinyrainbow | 2.0.0 | MIT |
-| tinyspy | 4.0.6 | MIT |
 | tmp | 0.2.7 | MIT |
 | tmp-promise | 3.0.3 | MIT |
 | truncate-utf8-bytes | 1.0.2 | WTFPL |
@@ -571,11 +554,10 @@ Generated from package-lock.json. 581 package entries. Licenses shown are npm me
 | utf8-byte-length | 1.0.5 | (WTFPL OR MIT) |
 | util-deprecate | 1.0.2 | MIT |
 | vite | 7.3.6 | MIT |
-| vite-node | 3.2.4 | MIT |
-| vitest | 3.2.7 | MIT |
+| vitest | 5.0.2 | MIT |
 | webcrypto-core | 1.9.2 | MIT |
 | which | 5.0.0 | ISC |
-| why-is-node-running | 2.3.0 | MIT |
+| why-is-node-running | 3.2.2 | MIT |
 | word-wrap | 1.2.5 | MIT |
 | wrap-ansi | 7.0.0 | MIT |
 | wrappy | 1.0.2 | ISC |
