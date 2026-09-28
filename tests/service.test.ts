@@ -58,6 +58,12 @@ describe('permanent clinical and billing records',()=>{
     expect((request('patients.list',{query:'নাম',page:0}) as unknown[]).length).toBe(1);
     expect((clinic.db.prepare("SELECT COUNT(*) n FROM audit_logs WHERE action='visit.created'").get() as {n:number}).n).toBe(1);
   });
+  it('paginates patients and searches beyond the first page',()=>{
+    for(let n=0;n<35;n++)patient(`Patient ${String(n).padStart(2,'0')}`);
+    expect((request('patients.list',{page:0}) as unknown[]).length).toBe(30);
+    expect((request('patients.list',{page:1}) as unknown[]).length).toBe(5);
+    expect((request('patients.list',{query:'Patient 00',page:0}) as unknown[])).toHaveLength(1);
+  });
   it('preserves invoice snapshots, exact poisha and multiple partial payments',()=>{
     const id=patient();
     const invoice=request('invoices.create',{patientId:id,items:[{description:'Consultation',quantity:2,unit_poisha:15050}],discount_poisha:100}) as string;
