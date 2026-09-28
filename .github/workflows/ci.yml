@@ -36,7 +36,10 @@ jobs:
           if ($status -ne 0) {
             "## Packaging failure (last 100 lines)" >> $env:GITHUB_STEP_SUMMARY
             '```text' >> $env:GITHUB_STEP_SUMMARY
-            Get-Content packaging.log -Tail 100 >> $env:GITHUB_STEP_SUMMARY
+            $tail = @(Get-Content packaging.log -Tail 40)
+            $tail >> $env:GITHUB_STEP_SUMMARY
+            $escaped = ($tail | ForEach-Object { $_.Replace('%', '%25').Replace('\r', '%0D') }) -join '%0A'
+            Write-Output "::error file=package.json,line=1::$escaped"
             '```' >> $env:GITHUB_STEP_SUMMARY
             exit $status
           }
