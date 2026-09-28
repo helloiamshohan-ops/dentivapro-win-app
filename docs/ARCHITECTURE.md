@@ -1,0 +1,15 @@
+# Architecture decision record — Dentiva Pro
+
+Target: x64 Windows 10/11, offline, minimum 1280×720 at 100% with scrolling at smaller windows; test scaling 100/125/150/175/200%. Single installation/clinic; all business state local. Prefer Electron (MIT) with bundled Chromium/Node; React (MIT), TypeScript (Apache-2.0), Vite (MIT), SQLite (public domain) via better-sqlite3 (MIT), Electron Builder (MIT)/NSIS (zlib), Playwright (Apache-2.0), Vitest (MIT). Confirm actual transitive licenses at lockfile audit before release, not by assumption.
+
+## Trust/data flow
+Windows shortcut -> Electron main process -> private BrowserWindow loading a packaged `file:` renderer. Main process owns data directory, SQLite connection and services. Renderer is untrusted. Preload exposes only typed request methods through `contextBridge`; `contextIsolation`, sandbox, no Node integration, no remote content, no browser open/popups, CSP, navigation blocked, strict IPC validation, authentication+permission checked for every operation. Never pass raw SQL or arbitrary filesystem paths from renderer. No local HTTP server and thus no port, localhost exposure, orphan service or browser dependency. Native print dialogue through Electron. Browser-based UI is embedded and opens automatically on EXE launch.
+
+## Modules/layers
+Renderer (React + accessible components + routes/state) -> typed preload API -> validated IPC registry -> application services (transaction boundary, authorization, audit) -> repositories/SQLite and attachment store; print service renders separate immutable document snapshots; backup service coordinates SQLite online backup and attachment manifest. Main process never trusts renderer role claims. Authentication state lives in main process memory per window and is cleared by lock/logout/timeout/window destruction. Prefer server-side pagination and parameterized queries. Explicit UTC timestamps, `Asia/Dhaka` day boundaries, integer poisha. All modifications requiring audit are atomic with the audit entry.
+
+## Lifecycle
+Single instance lock; second launch focuses existing window; create user directories in `%APPDATA%/DentivaPro` (database/config/log) and `%LOCALAPPDATA%/DentivaPro` (attachment store/temp), selectable backups outside installation. DB connection closes after windows close; OS handles killed process, SQLite WAL recovers committed transactions. Renderer crashes trigger controlled reload into login/locked state, not an unauthenticated session. Auto-backup due checks on startup and periodically while running. Migration after verified safety backup in transaction; incompatibility stops app with actionable recovery path.
+
+## Operational limits
+Single-machine file ownership; network/OneDrive synced live DB is unsupported. Windows ACLs and BitLocker mitigate at-rest access, but local admin can bypass app RBAC. Activation is a deterrent, not cryptographic DRM. Electron Chromium is bundled for offline consistency and increases installer size. Security vulnerabilities after the final version require a maintenance policy; claiming permanent security without updates would be inaccurate.

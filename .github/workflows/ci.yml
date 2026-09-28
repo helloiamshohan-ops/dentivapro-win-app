@@ -1,0 +1,44 @@
+name: Development checks
+on:
+  push:
+    branches: [arena/01a0e9f3-dentivapro-win-app]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  check-and-package:
+    runs-on: windows-2022
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Unit and integration tests
+        run: npm test
+      - name: Production dependency audit
+        run: npm run audit:deps
+      - name: License inventory validation
+        run: npm run audit:licenses
+      - name: Build and package development installer
+        run: npm run package:win
+      - name: Verify generated development installer
+        shell: pwsh
+        run: |
+          $files = @(Get-ChildItem dist -Filter '*Setup*.exe')
+          if ($files.Count -ne 1 -or $files[0].Length -lt 1000000) { throw 'Expected one nonempty NSIS installer' }
+          Get-FileHash $files[0].FullName -Algorithm SHA256
+      - name: Upload development artifact (not a release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dentiva-pro-unvalidated-development-installer
+          path: dist/*Setup*.exe
+          if-no-files-found: error

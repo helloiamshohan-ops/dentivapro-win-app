@@ -1,0 +1,5 @@
+# Installation and troubleshooting (development state)
+
+No validated installer is available. Do **not** install this development build for clinical use or enter real patient information. A future Windows x64 NSIS installer is configured, but fresh-machine, offline, clean-uninstall and printer validation have not occurred. A development build stores data under Electron's `%APPDATA%/dentiva-pro`-style userData path as resolved by Electron; this path must be confirmed on a Windows test machine before migration or backup documentation is finalized. Uninstall is configured to preserve application data, but this has not been manually tested. Do not copy a live SQLite WAL database as a backup.
+
+If a development build fails to launch, check Windows Event Viewer and the application's user-data `logs/errors.log`. The log intentionally omits patient details and secret inputs. Preserve the full user-data directory before troubleshooting, do not overwrite it with a new build. Recovery/restore is **not yet implemented**.
