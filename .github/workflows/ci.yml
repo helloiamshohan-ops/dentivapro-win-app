@@ -11,8 +11,8 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: npm
@@ -29,7 +29,17 @@ jobs:
       - name: License inventory validation
         run: npm run audit:licenses
       - name: Build and package development installer
-        run: npm run package:win
+        shell: pwsh
+        run: |
+          npm run package:win *> packaging.log
+          $status = $LASTEXITCODE
+          if ($status -ne 0) {
+            "## Packaging failure (last 100 lines)" >> $env:GITHUB_STEP_SUMMARY
+            '```text' >> $env:GITHUB_STEP_SUMMARY
+            Get-Content packaging.log -Tail 100 >> $env:GITHUB_STEP_SUMMARY
+            '```' >> $env:GITHUB_STEP_SUMMARY
+            exit $status
+          }
       - name: Verify generated development installer
         shell: pwsh
         run: |
